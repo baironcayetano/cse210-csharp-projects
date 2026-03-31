@@ -40,11 +40,7 @@ class Program
                 int randomNumber = random.Next(1,maxNumber);
                 scripture.HideRandomWords(randomNumber);
                 scripture.Display();
-                if (scripture.isCompletlyHidden())
-                {
-                    exitProgram = true;
-                }
-                  
+                exitProgram = scripture.isCompletlyHidden();
             }
         }
 
