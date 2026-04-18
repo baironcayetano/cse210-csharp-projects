@@ -22,9 +22,12 @@ class ChecklistGoal:Goal
 
     public override void RecordEvent()
     {
-        _amountCompleted += 1;
-        double pointsEarned = (GetPoints()/_target) + (IsComplete() ? _bonus : 0);
-        SetPointsEarned(pointsEarned); 
+        if (!IsComplete())
+        {
+            _amountCompleted += 1;
+            double pointsEarned = GetPoints() + (IsComplete() ? _bonus : 0);
+            SetPointsEarned(pointsEarned);
+        } 
     }
 
     public override bool IsComplete()
@@ -43,10 +46,15 @@ class ChecklistGoal:Goal
         return $"Checklist,{GetName()},{GetDescription()},{GetPoints()},{_amountCompleted},{_target},{_bonus}";
     }
 
+    protected override void SetPointsEarned(double pointsEarned)
+    {
+        _pointsEarned += pointsEarned; 
+    }
+
     public void SetAmountCompleted(int amountCompleted)
     {
         _amountCompleted = amountCompleted;
-        double pointsEarned = (GetPoints()/_target) + (IsComplete() ? _bonus : 0);
+        double pointsEarned = GetPoints() + (IsComplete() ? _bonus : 0);
         SetPointsEarned(pointsEarned);
     }
 

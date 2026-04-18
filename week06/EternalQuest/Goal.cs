@@ -2,7 +2,7 @@ abstract class Goal
 {
     private string _name;
     private string _description;
-    private double _pointsEarned;
+    protected double _pointsEarned;
     private int _points;
 
     private bool _completed;
@@ -30,7 +30,7 @@ abstract class Goal
         _points = points;
     }
 
-    protected void SetPointsEarned(double pointsEarned)
+    protected virtual void SetPointsEarned(double pointsEarned)
     {
         _pointsEarned = pointsEarned;
     }

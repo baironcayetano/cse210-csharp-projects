@@ -18,7 +18,12 @@ class EternalGoal:Goal
 
     public override bool IsComplete()
     {
-        return GetPointsEarned() >= GetPoints();
+        return false;
+    }
+
+    public override string GetDetailsString()
+    {
+        return $"Enternal - {GetName()} ({GetDescription()})";
     }
 
     public override string GetStringRepresentation()

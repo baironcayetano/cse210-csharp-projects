@@ -69,7 +69,8 @@ class GoalManager
 
         string goalName = GetInput("Enter the name of your goal:");
         string goalDescription = GetInput("Enter the description of your goal:");
-        string pointsInput = GetInput("Enter the points you will receive for completing this goal");
+        string textInput = choice == 3 ? "Enter the points you will receive every time you complete this goal" : "Enter the points you will receive for completing this goal";
+        string pointsInput = GetInput(textInput);
         int points = int.Parse(pointsInput);
         while(points <= 0)
         {
@@ -95,7 +96,7 @@ class GoalManager
                     userInput = GetInput("Invalid number. Please enter the number of times you need to complete this goal");
                     timesToComplete = int.Parse(userInput);
                 }
-                ChecklistGoal checklistGoal = new ChecklistGoal(goalName,goalDescription,50, timesToComplete,500);
+                ChecklistGoal checklistGoal = new ChecklistGoal(goalName,goalDescription,points, timesToComplete,500);
                 _goals.Add(checklistGoal);
                 break;
             default:
@@ -106,6 +107,7 @@ class GoalManager
 
     public void ListGoals()
     {
+        Console.Clear();
         int counter = 1;
         foreach(Goal goal in _goals)
         {
@@ -145,6 +147,7 @@ class GoalManager
                 writer.WriteLine(goal.GetStringRepresentation());
             }
         }
+        Console.WriteLine("Saved!");
     }
 
     public void LoadGoals()
@@ -176,16 +179,15 @@ class GoalManager
                     EternalGoal eternalGoal = new EternalGoal(parts);
                     _goals.Add(eternalGoal);
                     break;
-                case "CheckList":
+                case "Checklist":
                     ChecklistGoal checklistGoal = new ChecklistGoal(parts);
                     _goals.Add(checklistGoal);
                     break;
                 default:
                     break;
             }
-
-
         } 
+        Console.WriteLine("Loaded!");
     }
 
 }
