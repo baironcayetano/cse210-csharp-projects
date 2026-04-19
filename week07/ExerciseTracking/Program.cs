@@ -8,6 +8,7 @@ class Program
         {
             new Running(40,20),
             new Cycling(120,20),
+            new Swimming(50,5),
         };
 
         Console.WriteLine("Summaries in km");
