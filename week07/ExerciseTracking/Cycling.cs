@@ -1,8 +1,9 @@
-class Running : Exercise
+class Cycling : Exercise
 {
     private double _distance;
     private int _minutes;
-    public Running(double distance, int minutes)
+
+    public Cycling(double distance, int minutes)
     {
         _distance = distance;
         _minutes = minutes;
@@ -14,6 +15,6 @@ class Running : Exercise
         double speed = GetSpeed(pace);
         string unitPerHour = KM ? "kph" : "mph";
         string unit = KM ? "km" : "mile"; 
-        return $"{GetTime()} Running ({_minutes} min): Distance {_distance} miles, Speed {speed} {unitPerHour}, Pace {pace:2} min per {unit}";
+        return $"{GetTime()} Cycling ({_minutes} min): Distance {_distance} miles, Speed {speed} {unitPerHour}, Pace {pace:2} min per {unit}";
     }
 }

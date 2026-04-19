@@ -15,7 +15,7 @@ abstract class Exercise{
 
     protected string GetTime()
     {
-        DateTime dateTime = new DateTime();
+        DateTime dateTime = DateTime.Now;
         string format = dateTime.ToString("dd MMM yyyy");
         return format;
     }
